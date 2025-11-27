@@ -64,6 +64,7 @@
             border-radius: 8px;
             border: 0;
             font-weight: 700;
+            margin-left: auto;
             cursor: pointer
         }
 
@@ -196,17 +197,31 @@
         }
 
         .action-btn {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            padding: 6px 10px;
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 6px 12px;
             border-radius: 6px;
+            min-width: 80px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            background: transparent;
             color: #cbd5dd;
-            cursor: pointer
+            cursor: pointer;
         }
 
-        .action-btn.delete {
-            color: var(--red-1);
-            border-color: rgba(200, 20, 20, 0.12)
+        .action-btn.btn-edit {
+            background: linear-gradient(90deg, var(--muted), #434e56);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+        }
+
+        .action-btn.btn-delete {
+            background: linear-gradient(90deg, var(--red-1), var(--red-2));
+            color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            box-shadow: 0 8px 24px rgba(200, 0, 0, 0.12);
         }
     </style>
 </head>
@@ -239,7 +254,7 @@
                     </div>
                     <div class="container">
                         <div class="panel">
-                            <div class="head">
+                            <div class="head"style="display: flex; justify-content: flex-end;">
 
                                 <a href="{{ route('admin.usuarios.create') }}" class="btn-add">Agregar</a>
                             </div>
@@ -267,11 +282,11 @@
                                         <td>{{ $u->role ?? '-' }}</td>
                                         <td>
                                             <div class="actions">
-                                                <a class="action-btn" href="{{ route('admin.usuarios.edit', $u) }}">Editar</a>
+                                                <a class="action-btn btn-edit" href="{{ route('admin.usuarios.edit', $u) }}">Editar</a>
                                                 <form method="POST" action="{{ route('admin.usuarios.destroy', $u) }}" style="display:inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="action-btn delete" onclick="return confirm('Eliminar usuario?')">Eliminar</button>
+                                                    <button class="action-btn btn-delete" onclick="return confirm('Eliminar usuario?')">Eliminar</button>
                                                 </form>
                                             </div>
                                         </td>

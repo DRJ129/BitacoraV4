@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
-use App\Http\Controllers\Admin\UserController; 
+use App\Http\Controllers\Admin\UserController;
 use App\Models\User;
 
 
@@ -22,7 +22,7 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::get('/register', function () {
-    return view('auth.register');
+    return view('auth.Register');
 })->name('register');
 
 Route::post('/login', [LoginController::class, 'authenticate']);
